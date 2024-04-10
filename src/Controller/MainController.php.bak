@@ -1,0 +1,84 @@
+<?php
+
+namespace App\Controller;
+
+use App\Form\PostType;
+use App\Entity\Post;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+use Doctrine\ORM\EntityManagerInterface;
+
+class MainControllerBAK extends AbstractController
+{
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+    #[Route('/', name: 'app_main')]
+    public function index(Request $request): Response
+    {
+        $pageLang = $request->getLocale();
+        $posts = $this->entityManager->getRepository(Post::class)->findAll();
+
+        return $this->render('main/index.html.twig', [
+            'pageLang' => $pageLang,
+            'posts' => $posts,
+        ]);
+    }
+
+    #[Route('/create-post', name: 'create-post')]
+    public function createPost(Request $request)
+    {
+        $post = new Post();
+        $form = $this->createForm(PostType::class, $post);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->persist($post);
+            $this->entityManager->flush();
+            $this->addFlash('message', 'Insert Succsesfully');
+
+            return $this->redirectToRoute('app_main');
+        };
+        return $this->render('main/post.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    #[Route('/edit-post/{id}', name: 'edit-post')]
+    public function editpost(Request $request, $id)
+    {
+        $post = $this->entityManager->getRepository(Post::class)->find($id);
+        $form = $this->createForm(PostType::class, $post);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->persist($post);
+            $this->entityManager->flush();
+            $this->addFlash('message', 'Updated Succsesfully');
+
+            return $this->redirectToRoute('app_main');
+        };
+
+        return $this->render('main/post.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    #[Route('delete-post/{id}', name: 'delete-post')]
+    public function deletePost($id)
+    {
+        $post = $this->entityManager->getRepository(Post::class)->find($id);
+
+        $this->entityManager->remove($post);
+        $this->entityManager->flush();
+
+        $this->addFlash('message', 'Deleted Successfully.');
+
+        return $this->redirectToRoute('app_main');
+    }
+}

@@ -6,7 +6,7 @@ declare(strict_types=1);
  * @license MIT License
  * @file PostService.php
  */
-namespace App\Service;
+namespace App\Services;
 
 use App\Entity\Post;
 use Doctrine\ORM\EntityManagerInterface;
@@ -43,8 +43,8 @@ class PostService
         $this->entityManager->flush();
     }
 
-    public function getPost(Int $id)
+    public function getPost($id)
     {
-        return $this->entityManager->getRepository(Post::class)->find($id);
+        return $this->entityManager->getRepository(Post::class)->find((int)$id);
     }
 }

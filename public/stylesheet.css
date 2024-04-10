@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'icelandregular';
+    src: url('fonts/iceland-regular-webfont.woff2') format('woff2'),
+    url('fonts/iceland-regular-webfont.woff') format('woff'),
+    url('fonts/Iceland-Regular.ttf') format('truetype'),
+    url('fonts/Iceland-Regular.svg#webfont') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

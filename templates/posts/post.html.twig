@@ -6,14 +6,18 @@
         {{ form_start(form) }}
         <div class="form-group">
             {{ form_label(form.title) }}
-            {{ form_widget(form.title,{'attr':{'class':'form-control'}}) }}
+            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
         </div>
         <div class="form-group">
             {{ form_label(form.content) }}
-            {{ form_widget(form.content, {'attr':{'class':'form-control'}}) }}
+            {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.image) }}
+            {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
         </div>
         <button type="submit" class="btn btn-primary mt-2">
-            {{ form.vars.data.id is null ? 'OK, I\'ll save the post' : 'OK, I\'ll Update Post' }}
+            {{ form.vars.data.id is null ? 'Save Post' : 'Update Post' }}
         </button>
         {{ form_end(form) }}
     </div>

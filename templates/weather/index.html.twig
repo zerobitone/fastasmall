@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wetterbericht{% endblock %}
+
+{% block body %}
+    <h1>Wetterbericht Berlin</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Tag</th>
+            <th scope="col">Minimale Temperatur</th>
+            <th scope="col">Maximale Temperatur</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for day in daily.time %}
+            <tr>
+                <td>{{ day|date('d.m.Y') }}</td>
+                <td>{{ daily.temperature_2m_min[loop.index0] }} &deg;C</td>
+                <td>{{ daily.temperature_2m_max[loop.index0] }} &deg;C</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

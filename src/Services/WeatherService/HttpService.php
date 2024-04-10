@@ -7,7 +7,7 @@ declare(strict_types=1);
  * @file HttpService.php
  */
 
-namespace App\Service\WeatherService;
+namespace App\Services\WeatherService;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
