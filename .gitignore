@@ -1,6 +1,7 @@
 
 ###> symfony/framework-bundle ###
 /.env.local
+/.env
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
@@ -8,3 +9,44 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+!/var/cache/.gitkeep
+!/var/logs/.gitkeep
+!/var/sessions/.gitkeep
+/bin/
+!bin/console
+!bin/phpunit
+/build/
+!/build/.gitkeep
+/node_modules/
+/npm-debug.log
+/yarn-error.log
+
+### Symfony Patch ###
+/patches/
+
+### IDEs and Editors ###
+/.idea/
+/.vscode/
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.DS_Store
+
+### PHP ###
+/phpunit.xml
+/phpunit.xml.dist
+
+### Logs ###
+*.log
+*.sucatalog
+
+### OS ###
+.Thumbs.db
+ehthumbs.db
+
+### Others ###
+/config/secrets/prod/prod.encrypt.public.php
+/coverage/
+/export/
