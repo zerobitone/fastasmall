@@ -8,7 +8,10 @@
 /public/bundles/
 /var/
 /vendor/
-###< symfony/framework-bundle ###
+
+
+/public/uploads/posts/*
+!/public/uploads/posts/default_image.jpg
 
 !/var/cache/.gitkeep
 !/var/logs/.gitkeep
