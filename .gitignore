@@ -12,6 +12,8 @@
 
 /public/uploads/posts/*
 !/public/uploads/posts/default_image.jpg
+!/public/uploads/smh_logo_red.png
+!/public/uploads/github-mark.png
 
 !/var/cache/.gitkeep
 !/var/logs/.gitkeep
