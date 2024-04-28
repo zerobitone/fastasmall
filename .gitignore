@@ -55,3 +55,7 @@ ehthumbs.db
 /config/secrets/prod/prod.encrypt.public.php
 /coverage/
 /export/
+###> phpunit/phpunit ###
+phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
